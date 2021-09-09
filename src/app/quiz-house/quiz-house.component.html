@@ -1,0 +1,30 @@
+<div class="main-wrapper">
+
+    <div class="question-cat">
+        <h4>Helo</h4>
+    </div>
+    <div class="question-lvl">
+        <h6></h6>
+    </div>
+    <button (click)="onStart()">Start</button>
+
+        <div class="ques-block" *ngFor="let question of questions;let quesIndex = index">
+            <p>{{question.question}}</p>
+            <div class="check-area" >
+                <div class="radio-item">
+                    <!-- <input type="radio" id="true" name="question[quesIndex]" value="True" (click)="onValid($event.target.value,quesIndex)" > -->
+                    <input type="radio" [id]="quesIndex+'1'" [name]="quesIndex" value="True"   [(ngModel)]="question.selected_ans" >
+                    <label [for]="quesIndex+'1'">True</label>
+                </div>
+                <div class="radio-item">
+                    <!-- <input type="radio" id="false" name="question[quesIndex]" value="False" (click)="onValid($event.target.value,quesIndex)"> -->
+                    <input type="radio" [id]="quesIndex+'2'"  [name]="quesIndex" value="False"   [(ngModel)]="question.selected_ans">
+
+                    <label [for]="quesIndex+'2'">False</label>
+                </div>
+            </div>
+        </div>
+
+        <button (click)="onSub()" *ngIf="showSub">Submitt</button>
+        <button (click) = "onHome()" *ngIf="showHome">Home</button>
+</div>
